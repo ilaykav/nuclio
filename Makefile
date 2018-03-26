@@ -89,21 +89,21 @@ build: docker-images tools
 	@echo Done.
 
 DOCKER_IMAGES_RULES = \
-    controller \
-    handler-builder-golang-onbuild \
-    user-jar-builder-java-onbuild \
-    handler-java \
-    processor-pypy \
-    handler-pypy \
-    handler-builder-java-onbuild \
-    playground \
-    dashboard \
-    processor-py \
-    processor-shell \
-    processor-pypy \
-    handler-pypy \
-    handler-nodejs \
-    handler-builder-dotnetcore-onbuild
+    controller #  \
+    # handler-builder-golang-onbuild \
+    # user-jar-builder-java-onbuild \
+    # handler-java \
+    # processor-pypy \
+    # handler-pypy \
+    # handler-builder-java-onbuild \
+    # playground \
+    # dashboard \
+    # processor-py \
+    # processor-shell \
+    # processor-pypy \
+    # handler-pypy \
+    # handler-nodejs \
+    # handler-builder-dotnetcore-onbuild
 
 docker-images: ensure-gopath $(DOCKER_IMAGES_RULES)
 	@echo Done.

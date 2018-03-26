@@ -341,6 +341,7 @@ func (p *Platform) deployFunction(createFunctionOptions *platform.CreateFunction
 		Labels:        labels,
 		Volumes: map[string]string{
 			localProcessorConfigPath: path.Join("/", "etc", "nuclio", "config", "processor", "processor.yaml"),
+			"/var/run/docker.sock":"/var/run/docker.sock",
 		},
 	})
 

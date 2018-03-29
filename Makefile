@@ -30,6 +30,7 @@ else
 	NUCLIO_DEFAULT_TEST_HOST := "docker.for.mac.host.internal"
 endif
 
+
 NUCLIO_OS := $(if $(NUCLIO_OS),$(NUCLIO_OS),$(NUCLIO_DEFAULT_OS))
 NUCLIO_ARCH := $(if $(NUCLIO_ARCH),$(NUCLIO_ARCH),$(NUCLIO_DEFAULT_ARCH))
 NUCLIO_TAG := $(if $(NUCLIO_TAG),$(NUCLIO_TAG),latest)
@@ -132,7 +133,10 @@ NUCTL_TARGET = $(GOPATH)/bin/nuctl
 nuctl: ensure-gopath
 	$(GO_BUILD_TOOL) -o /go/bin/$(NUCTL_BIN_NAME) cmd/nuctl/main.go
 	@rm -f $(NUCTL_TARGET)
+ifndef DOCKERIZED_BUILD
 	@ln -sF $(GOPATH)/bin/$(NUCTL_BIN_NAME) $(NUCTL_TARGET)
+endif
+
 
 processor: ensure-gopath
 	docker build --file cmd/processor/Dockerfile --tag nuclio/processor .

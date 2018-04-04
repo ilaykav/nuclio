@@ -119,7 +119,7 @@ push-docker-images:
 	@echo Done.
 
 print-docker-images:
-	for image in $(IMAGES_TO_PUSH); do \
+	@for image in $(IMAGES_TO_PUSH); do \
 		echo $$image ; \
 	done
 

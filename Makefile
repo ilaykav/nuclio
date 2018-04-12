@@ -120,7 +120,6 @@ push-docker-images:
 
 print-tests-paths:
 	find pkg cmd -name '*_test.go' -exec dirname {} \; | sort -u
-	done
 
 
 print-docker-images:

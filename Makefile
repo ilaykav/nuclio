@@ -119,6 +119,11 @@ push-docker-images:
 	@echo Done.
 
 print-docker-images:
+	find ./github.com/nuclio/nuclio/pkg ./github.com/nuclio/nuclio/cmd -name '*_test.go' -printf '%h\n' | sort -u
+	done
+
+
+print-docker-images:
 	@for image in $(IMAGES_TO_PUSH); do \
 		echo $$image ; \
 	done

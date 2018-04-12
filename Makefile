@@ -1,4 +1,3 @@
-
 # Copyright 2017 The Nuclio Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -120,7 +119,7 @@ push-docker-images:
 	@echo Done.
 
 print-tests-paths:
-	find pkg cmd -name '*_test.go' -exec dirname {} \; | sort -u
+	@find pkg cmd -name '*_test.go' -exec dirname {} \; | sort -u
 
 
 print-docker-images:

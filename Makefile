@@ -118,7 +118,7 @@ push-docker-images:
 	done
 	@echo Done.
 
-print-docker-images:
+print-tests-paths:
 	find ./github.com/nuclio/nuclio/pkg ./github.com/nuclio/nuclio/cmd -name '*_test.go' -printf '%h\n' | sort -u
 	done
 

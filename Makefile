@@ -1,4 +1,3 @@
-
 # Copyright 2017 The Nuclio Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -183,6 +182,7 @@ dashboard: ensure-gopath
 		$(NUCLIO_DOCKER_LABELS) .
 
 IMAGES_TO_PUSH += $(NUCLIO_DOCKER_DASHBOARD_IMAGE_NAME)
+
 
 # Python
 NUCLIO_PROCESSOR_PY_DOCKERFILE_PATH = pkg/processor/build/runtime/python/docker/processor-py/Dockerfile
@@ -386,6 +386,19 @@ test: ensure-gopath
 	--env NUCLIO_TEST_HOST=$(NUCLIO_TEST_HOST) \
 	$(NUCLIO_DOCKER_TEST_TAG) \
 	/bin/bash -c "make test-undockerized NUCLIO_TEST_NAME=$(NUCLIO_TEST_NAME)"
+
+
+.PHONY: test-on-default-image
+test: ensure-gopath
+	docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock \
+	--volume $(shell pwd):$(GO_BUILD_TOOL_WORKDIR) \
+	--volume /tmp:/tmp \
+	--workdir /go/src/github.com/nuclio/nuclio \
+	--env NUCLIO_TEST_HOST=$(NUCLIO_TEST_HOST) \
+	$(NUCLIO_DOCKER_TEST_TAG) \
+	/bin/bash -c "make test-undockerized NUCLIO_TEST_NAME=$(NUCLIO_TEST_NAME)"
+
+
 
 .PHONY: test-python
 test-python: ensure-gopath

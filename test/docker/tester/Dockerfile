@@ -27,6 +27,4 @@ RUN go get github.com/v3io/v3io-go-http \
 
 
 COPY nuclio/. /go/src/github.com/nuclio/nuclio
-COPY /var/lib/docker/. /var/lib/docker
-
 
